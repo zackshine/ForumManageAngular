@@ -1,0 +1,9 @@
+<div *ngIf="forum">
+  <h2>{{forum.name | uppercase}} Details</h2>
+  <div><span>id: {{forum.id}}</span></div>
+  <div>
+    <label>name:
+      <input [(ngModel)] = "forum.name" placeholder="name"/>
+    </label>
+  </div>
+</div>

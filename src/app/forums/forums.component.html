@@ -1,0 +1,20 @@
+<p>
+  forums works! 
+</p>
+<!-- <h2>{{forum.name}} Details</h2>
+<div><span>id: </span>{{forum.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="forum.name" placeholder="name"/>
+  </label>
+</div> -->
+
+<h2>My Forums</h2>
+<ul class="forums">
+  <li *ngFor="let forum of forums" 
+     [class.selected]="hero == selectedForum" 
+     (click)="onSelect(forum)">
+    <span class="badge">{{forum.id}}</span> {{forum.name}}
+  </li>
+</ul>
+<app-forum-detail [forum] = "selectedForum"></app-forum-detail>
