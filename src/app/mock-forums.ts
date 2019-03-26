@@ -1,6 +1,6 @@
 import {Forum} from './forum';
 
-export const FOURMS: Forum[] = [
+export const FORUMS: Forum[] = [
     {id:1,name:'asp.net core'},
     {id:2,name:'azure'},
     {id:3,name:'asp.net'},

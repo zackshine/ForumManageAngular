@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Forum} from '../forum';
-import {FOURMS} from '../mock-forums';
+import {FORUMS} from '../mock-forums';
+import{ForumService} from '../forum.service';
 
 @Component({
   selector: 'app-forums',
@@ -9,18 +10,24 @@ import {FOURMS} from '../mock-forums';
 })
 export class ForumsComponent implements OnInit {
   
-  forums = FOURMS;
+  // forums = FORUMS;
+  forums:Forum[];
   selectedForum: Forum;
   
   
-  constructor() { }
+  constructor(private forumService:ForumService) { }
 
   ngOnInit() {
-    
+    this.getForums();
   }
 
   onSelect(forum: Forum) : void {
     this.selectedForum = forum;
+  }
+
+  getForums(): void{
+    this.forumService.getForums()
+           .subscribe(forums=>this.forums = forums);
   }
   
   
