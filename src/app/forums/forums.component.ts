@@ -12,7 +12,7 @@ export class ForumsComponent implements OnInit {
   
   // forums = FORUMS;
   forums:Forum[];
-  selectedForum: Forum;
+  // selectedForum: Forum;
   
   
   constructor(private forumService:ForumService) { }
@@ -21,14 +21,26 @@ export class ForumsComponent implements OnInit {
     this.getForums();
   }
 
-  onSelect(forum: Forum) : void {
-    this.selectedForum = forum;
-  }
+  // onSelect(forum: Forum) : void {
+  //   this.selectedForum = forum;
+  // }
 
   getForums(): void{
     this.forumService.getForums()
            .subscribe(forums=>this.forums = forums);
   }
   
+  add(name:string):void{
+    name = name.trim();
+    if(!name){return;}
+    this.forumService.addForum({name} as Forum)
+    .subscribe(forum=>{
+      this.forums.push(forum);
+    });
+  }
   
+  delete(forum: Forum): void {
+    this.forums = this.forums.filter(h => h !== forum);
+    this.forumService.deleteForum(forum).subscribe();
+  }
 }

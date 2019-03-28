@@ -10,11 +10,25 @@
 </div> -->
 
 <h2>My Forums</h2>
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
 <ul class="forums">
-  <li *ngFor="let forum of forums" 
-     [class.selected]="hero == selectedForum" 
-     (click)="onSelect(forum)">
-    <span class="badge">{{forum.id}}</span> {{forum.name}}
+  <li *ngFor="let forum of forums" >
+     <!-- [class.selected]="hero == selectedForum" 
+     (click)="onSelect(forum)"> -->
+     <a routerLink="/detail/{{forum.id}}">
+        <span class="badge">{{forum.id}}</span> {{forum.name}}
+    </a>
+    <button class="delete" title="delete hero"
+      (click)="delete(forum)">x</button>    
   </li>
 </ul>
-<app-forum-detail [forum] = "selectedForum"></app-forum-detail>
+
+<!-- <app-forum-detail [forum] = "selectedForum"></app-forum-detail> -->
