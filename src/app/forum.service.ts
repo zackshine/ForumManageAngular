@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ForumService {
-  private forumsUrl = 'api/forums';
+  private forumsUrl = 'http://localhost:5001/api/forums';
   
   constructor(
       private http:HttpClient,
@@ -23,7 +23,7 @@ export class ForumService {
   
     return this.http.get<Forum[]>(this.forumsUrl)
     .pipe(
-      tap(_ => this.log('fetched heroes')),
+      tap(_ => this.log('fetched forums')),
       catchError(this.handleError<Forum[]>('getForums',[]))
     )
     // return of(FORUMS)
@@ -38,8 +38,8 @@ export class ForumService {
     // return of(FORUMS.find(forum=>forum.id==id));
   }
 
- updateForum(forum:Forum):Observable<any>{
-   return this.http.put(this.forumsUrl, forum, httpOptions).pipe(
+ updateForum(id:number,forum:Forum):Observable<any>{
+   return this.http.put(`${this.forumsUrl}/${id}`, forum, httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${forum.id}`)),
     catchError(this.handleError<any>('updateHero'))
    );
@@ -51,8 +51,8 @@ export class ForumService {
      catchError(this.handleError<Forum>(`addForum`))
    )
  }
- deleteForum(forum:Forum) :Observable<Forum>{
-   const id = typeof forum === 'number' ? forum:forum.id;
+ deleteForum(id:number) :Observable<Forum>{
+  //  const id = typeof forum === 'number' ? forum:forum.id;
    const url = `${this.forumsUrl}/${id}`;
    return this.http.delete<Forum>(url,httpOptions).pipe(
      tap(_=>this.log(`deleted forum id=${id}`)),

@@ -31,7 +31,7 @@ export class ForumDetailComponent implements OnInit {
     this.location.back();
   }
   save():void{
-    this.forumService.updateForum(this.forum)
+    this.forumService.updateForum(this.forum.id,this.forum)
     .subscribe(()=>this.goBack());
   }
 }

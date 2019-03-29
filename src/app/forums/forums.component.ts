@@ -39,8 +39,8 @@ export class ForumsComponent implements OnInit {
     });
   }
   
-  delete(forum: Forum): void {
-    this.forums = this.forums.filter(h => h !== forum);
-    this.forumService.deleteForum(forum).subscribe();
+  delete(id: number): void {
+    // this.forums = this.forums.filter(h => h !== forum);
+    this.forumService.deleteForum(id).subscribe();
   }
 }
