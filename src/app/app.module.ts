@@ -9,6 +9,8 @@ import { ForumDetailComponent } from './forum-detail/forum-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
+
+// import { AlertModule } from 'bootstrap';
 // import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 // import {InMemoryDataService} from './in-memory-data.service';
 
@@ -22,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
     DashboardComponent
   ],
   imports: [
+    // AlertModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
