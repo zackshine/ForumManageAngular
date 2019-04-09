@@ -1,0 +1,17 @@
+<p>
+  forum-add works!
+</p>
+<form>
+  <div class="form-group">
+    <label for="name">Forum Name</label>
+    <input type="text" class="form-control" id="name"  name="name" placeholder="Enter forum name" [(ngModel)]="forum.name">   
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addForum()">Submit</button>
+
+  <!-- <button *ngIf="dataToEdit"(click)="addForum()">
+      Edit
+  </button>
+  <button *ngIf="!dataToEdit" (click)="updateForum()">
+      New
+  </button> -->
+</form>

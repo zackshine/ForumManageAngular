@@ -25,7 +25,7 @@ export class ForumDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.forumService.getForum(id)
-                     .subscribe(forum=>this.forum = forum)
+        .subscribe(forum=>this.forum = forum)
   }
   goBack():void{
     this.location.back();

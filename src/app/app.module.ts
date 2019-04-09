@@ -9,6 +9,7 @@ import { ForumDetailComponent } from './forum-detail/forum-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ForumAddComponent } from './forum-add/forum-add.component';
 
 // import { AlertModule } from 'bootstrap';
 // import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
@@ -20,8 +21,10 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     ForumsComponent,
     ForumDetailComponent,
+    ForumAddComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForumAddComponent
   ],
   imports: [
     // AlertModule.forRoot(),
