@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ForumService {
-  private forumsUrl = 'http://localhost:5001/api/forums';
+  forumsUrl : string  = 'https://localhost:5001/api/forums';
   
   constructor(
       private http:HttpClient,
@@ -29,12 +29,21 @@ export class ForumService {
     // return of(FORUMS)
   }
 
-  getForum(id:number): Observable<Forum>{
-    const url = `${this.forumsUrl}/${id}`;
-    return this.http.get<Forum>(url).pipe(
-      tap(_=>this.log(`fetched form id=${id}`)),
-      catchError(this.handleError<Forum>(`getForum id=${id}`))
-    );
+  value:string = "test";
+// self.http.get("http://localhost:5000/api/UserCode?code="+this.value)
+//           .subscribe(data=>{
+//             console.log(data);
+//             // console.log(this.value)
+//           })
+//       });
+
+  getForum(id:number): Observable<any>{
+    return this.http.get<Forum>(this.forumsUrl + "/" + id);
+    // const url = `${this.forumsUrl}/${id}`;
+    // return this.http.get<Forum>(url).pipe(
+    //   tap(_=>this.log(`fetched form id=${id}`)),
+    //   catchError(this.handleError<Forum>(`getForum id=${id}`))
+    // );
     // return of(FORUMS.find(forum=>forum.id==id));
   }
 

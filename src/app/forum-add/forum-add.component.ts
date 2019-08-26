@@ -15,7 +15,7 @@ export class ForumAddComponent implements OnInit {
   constructor(
       private forumService:ForumService,
       private route:ActivatedRoute,
-      private location:Location,
+      private location:Location
     ) { }
 
   ngOnInit() {
@@ -45,8 +45,7 @@ export class ForumAddComponent implements OnInit {
     }else{
       this.forumService.updateForum(id,this.forum)
       .subscribe(()=>this.goBack());
-    }
-    
+    }  
    
   }
 

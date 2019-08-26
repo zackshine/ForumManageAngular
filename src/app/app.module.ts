@@ -10,6 +10,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ForumAddComponent } from './forum-add/forum-add.component';
+import { EngineerComponent } from './engineer/engineer.component';
+import { EngineerDetailComponent } from './engineer-detail/engineer-detail.component';
+import { EngineerAddComponent } from './engineer-add/engineer-add.component';
+import { AdBannerComponent } from './ad-banner/ad-banner.component';
+import { HighlightDirective } from './Directives/highlight.directive';
+import { StudentComponent } from './student/student.component';
+import { ZippyComponent } from './zippy/zippy.component';
 
 // import { AlertModule } from 'bootstrap';
 // import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
@@ -24,7 +31,14 @@ import { ForumAddComponent } from './forum-add/forum-add.component';
     ForumAddComponent,
     MessagesComponent,
     DashboardComponent,
-    ForumAddComponent
+    ForumAddComponent,
+    EngineerComponent,
+    EngineerDetailComponent,
+    EngineerAddComponent,
+    AdBannerComponent,
+    HighlightDirective,
+    StudentComponent,
+    ZippyComponent
   ],
   imports: [
     // AlertModule.forRoot(),

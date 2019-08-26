@@ -1,0 +1,19 @@
+
+<form>
+  <div class="form-group">
+    <label for="name">Engineer Name</label>
+    <input type="text" class="form-control" id="name"  name="name" placeholder="Enter engineer name" [(ngModel)]="engineer.name">   
+  </div>
+  <div class="form-group">
+      <label for="file">Choose Avatar</label>
+      <input type="file"
+             id="file"
+             name="image"
+             (change)="onFileChanged($event)"
+             [(ngModel)]="engineer.image"/>
+          
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addEngineer()">Submit</button>
+
+ 
+</form>
