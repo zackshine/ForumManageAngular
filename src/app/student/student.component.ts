@@ -8,6 +8,7 @@ import { ajax } from 'rxjs/ajax';
 
 import {StudentService} from '../student.service'
 import { Event } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-student',
@@ -18,9 +19,22 @@ export class StudentComponent implements OnInit {
  
   students: Student[] = [];
   event: any;
+  stopwatchValue: number;
+  stopwatchValue$: Observable<number>;
   constructor(private studentservice: StudentService) { }
 
   ngOnInit() {
+
+     const observable = interval(1000);
+     const subscription = observable.subscribe(x => console.log("test:" + x));
+     subscription.unsubscribe();
+    //
+    const values = of(11, 22, 33, 44, 55);
+    this.stopwatchValue$ = values;
+    this.stopwatchValue$.subscribe(num =>{
+      this.stopwatchValue = num;
+      console.log(this.stopwatchValue);
+    });
     //test simple Observable/Subscribe
     const studentsObservable = this.studentservice.getStudents();
     studentsObservable.subscribe((studentData:Student[])=>{
@@ -30,11 +44,10 @@ export class StudentComponent implements OnInit {
     })
     //test Rxjs map
     const nums = of(1, 2, 3);
-
     const squareValues = map((val: number) => val * val);
     const squaredNums = squareValues(nums);
-
     squaredNums.subscribe(x => console.log(x));
+
     //test Pipe
     const squareOdd = of(1, 2, 3, 4, 5)
       .pipe(
@@ -42,22 +55,26 @@ export class StudentComponent implements OnInit {
         map(n => n * n)
       );
     squareOdd.subscribe(x => console.log(x));
+
     //test ajax(comment below)
-    // const apiData = ajax('/api/data').pipe(
-    //   map(res => {
-    //     if (!res.response) {
-    //       throw new Error('Value expected!');
-    //     }
-    //     return res.response;
-    //   }),
-    //   catchError(err => of([]))
-    // );
+    const apiData = ajax('https://localhost:5001/api/values').pipe(
+      map(res => {
+        if (!res.response) {
+          throw new Error('Value expected!');
+        }
+        return res.response;
+      }),
+      catchError(err => of([]))
+    );
     
-    // apiData.subscribe({
-    //   next(x) { console.log('data: ', x); },
-    //   error(err) { console.log('errors already caught... will not run'); }
-    // });
-  
+    apiData.subscribe({
+      next(x) { console.log('data: ', x); },
+      error(err) { console.log('errors already caught... will not run'); }
+    });
+     //
+     
+    
+   
     
   }
 
